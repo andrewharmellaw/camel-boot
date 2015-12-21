@@ -18,11 +18,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-@IntegrationTest({"server.port=0"})
 public class RouteIntegrationTests {
 
-//    @Value("${local.server.port}")
-    private int port = 18080;
+    private int port = 18080; // TODO: load this from properties, the same as the ones which set the config on the route itself
 
     @Before
     public void setUp() throws Exception {
@@ -31,7 +29,7 @@ public class RouteIntegrationTests {
     }
 
     @Test
-    public void restAssuredHello() throws Exception {
+    public void restAssuredHelloWorld() throws Exception {
         when().get("/").then().body(equalTo("helloWorld"));
     }
 

@@ -13,7 +13,7 @@ public class ExampleNettyRoute extends RouteBuilder{
     @Override
     public void configure() throws Exception {
 
-        from("jetty:http://0.0.0.0:18080").
+        from("jetty:http://0.0.0.0:18080"). // TODO: load this from properties, the hostname and the port (then use in tests)
                 setBody().simple("helloWorld");
     }
 }
