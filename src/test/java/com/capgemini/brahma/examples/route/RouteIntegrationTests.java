@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -20,7 +18,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 @WebAppConfiguration
 public class RouteIntegrationTests {
 
-    private int port = 18080; // TODO: load this from properties, the same as the ones which set the config on the route itself
+    private int port = 8080; // TODO: load this from properties, the same as the ones which set the config on the route itself
 
     @Before
     public void setUp() throws Exception {
@@ -28,9 +26,16 @@ public class RouteIntegrationTests {
         RestAssured.port = port;
     }
 
+    @Ignore
     @Test
     public void restAssuredHelloWorld() throws Exception {
         when().get("/").then().body(equalTo("helloWorld"));
+    }
+
+    @Ignore
+    @Test
+    public void restAssuredRestGetHello() throws Exception {
+        when().get("/rest/hello").then().body(equalTo("Hello World"));
     }
 
 }
