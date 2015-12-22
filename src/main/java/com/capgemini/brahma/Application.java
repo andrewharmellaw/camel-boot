@@ -1,6 +1,5 @@
 package com.capgemini.brahma;
 
-import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.spring.boot.FatJarRouter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

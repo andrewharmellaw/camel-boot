@@ -10,6 +10,7 @@ public class ExampleRestDslRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
+        // TODO: this should be loaded from config
         Integer port = Integer.parseInt((System.getenv("PORT") != null ? System.getenv("PORT") : "10000"));
 
         restConfiguration()

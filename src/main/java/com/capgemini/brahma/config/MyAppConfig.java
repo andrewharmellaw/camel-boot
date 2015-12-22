@@ -17,7 +17,6 @@ public class MyAppConfig {
 //        return new DefaultMyService(camelContext);
 //    }
 
-
     @Bean
     CamelContextConfiguration contextConfiguration() {
         return new CamelContextConfiguration() {
