@@ -11,13 +11,13 @@ public class ExampleRestDslRoute extends RouteBuilder {
     public void configure() throws Exception {
 
         Integer port = Integer.parseInt((System.getenv("PORT") != null ? System.getenv("PORT") : "10000"));
-        
+
         restConfiguration()
                 .component("netty4-http")
                 .bindingMode(RestBindingMode.json)
                 .dataFormatProperty("prettyPrint", "true")
                 .host("0.0.0.0")
-                .contextPath("/")
+                .contextPath("/rest")
                 .port(port)
                 .apiContextPath("/api-doc")
                 .apiProperty("api.title", "User API")
@@ -26,21 +26,7 @@ public class ExampleRestDslRoute extends RouteBuilder {
 
         rest("/hello").description("Say hello.")
                 .produces("application/json")
-                .get().description("Get hello.").route().transform(constant("hello"));
-
-//        // indicate that we want to use 'servlet' as the component for the rest DSL
-//        // and we want to enable json binding mode
-//        restConfiguration().component("jetty").bindingMode(RestBindingMode.json)
-//                // and output using pretty print
-//                .dataFormatProperty("prettyPrint", "true")
-//                .contextPath("/rest").port(8080);
-//
-//        // this user REST service is json only
-//        rest("/pets").description("Pet rest service")
-//                .consumes("application/json").produces("application/json")
-//
-//                .get("/{id}").description("Find pet by id").outType(Pet.class)
-//                .to("bean:petService?method=getPet(${header.id})");
+                .get().description("Get hello.").route().transform(constant("BOOOOOOOM!!!!!"));
 
     }
 }
