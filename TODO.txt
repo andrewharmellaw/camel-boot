@@ -1,0 +1,18 @@
+ - Add example JMS Route
+ - Add Clive's Library
+ - Remove stray test XML config form the Archaius-Spring-Adapter JAR file
+ - SOAP end point with CXF
+ - Integration test for SOAP end point with CXF
+ - Metrics
+ - Instrumented Jetty / Netty
+ - Hystrix
+ - Archaius-Spring-Config
+ - Swagger
+ - Turn off unwanted things: tomcat, ...
+ - Integration tests in different source location, running in diff place in build
+ - Enable CORS
+ - Dependency cleanup
+ - Annotate to indicate when to add and when to remove things
+ - Document
+ - Fix banner properties
+ - "Info" REST endpoint
