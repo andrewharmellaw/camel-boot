@@ -23,14 +23,14 @@ public class RouteIntegrationTests {
     }
 
     @Test
-    public void restAssuredHelloWorld() throws Exception {
+    public void nettyHelloWorldTest() throws Exception {
         RestAssured.port = 18080; // TODO: this should be loaded from config
         when().get("/").then().body(equalTo("helloWorld"));
     }
 
     @Test
-    public void restAssuredRestGetHello() throws Exception {
-        RestAssured.port = 10000;  // TODO: this should be loaded from config
+    public void restGetHelloTest() throws Exception {
+        RestAssured.port = 10000;  // TODO  : this should be loaded from config
         when().get("/rest/hello").then().body(equalTo("\"BOOOOOOOM!!!!!\""));
     }
 
