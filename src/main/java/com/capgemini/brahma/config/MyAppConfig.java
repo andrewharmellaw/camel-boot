@@ -5,11 +5,10 @@ import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import org.springframework.context.annotation.ImportResource;
 
 @Configuration
-@ImportResource("classpath:META-INF/spring/cxf-config.xml")
+//@ImportResource("classpath:META-INF/spring/properties-config.xml")
 public class MyAppConfig {
 
     @Autowired

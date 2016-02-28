@@ -1,16 +1,14 @@
- - Add example JMS Route
- - Add Clive's Library
- - Remove stray test XML config form the Archaius-Spring-Adapter JAR file
  - Metrics
- - Instrumented Jetty / Netty
- - Hystrix
- - Archaius-Spring-Config
- - Swagger
- - Turn off unwanted things: tomcat, ...
+ - Instrumented Netty
+ - Customised Netty - access log publishing
+ - Remove stray test XML config form the Archaius-Spring-Adapter JAR file
  - Integration tests in different source location, running in diff place in build
- - Enable CORS
  - Dependency cleanup
  - Annotate to indicate when to add and when to remove things
  - Document
  - Fix banner properties
- - "Info" REST endpoint
+ - check what starts up - is it all needed?
+ - look into support >= versions
+ - "Info" HTTP endpoint (GET returns a simple JSON body with info on the service)
+ - tidy up what is in the git repo, and what we .gitignore
+ - Add example JMS Route
