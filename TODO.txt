@@ -1,14 +1,19 @@
- - Metrics
- - Instrumented Netty
+ - Update archaius-spring-adapter to latest version
+ - get external properties files working (with archaius-spring-adapter)
+ - Instrumented Netty (c.f. the instrumented TOmcat we use at the moment. N.b. what of this do we really need?)
  - Customised Netty - access log publishing
- - Remove stray test XML config form the Archaius-Spring-Adapter JAR file
+ - Check CamelMetricsUpdater works from springboot-camel-metrics-publisher
+ - swagger is running twice - once started explicitly by me, and another by Camel on a route. Stop one (making sure it has all the features we want)
  - Integration tests in different source location, running in diff place in build
  - Dependency cleanup
  - Annotate to indicate when to add and when to remove things
  - Document
  - Fix banner properties
  - check what starts up - is it all needed?
- - look into support >= versions
+ - look into supporting ">=" dependency versions
+ - Add more tests
+ - migrate the tests to spock
  - "Info" HTTP endpoint (GET returns a simple JSON body with info on the service)
  - tidy up what is in the git repo, and what we .gitignore
- - Add example JMS Route
+ - Add example JMS-consuming route project
+ - add example SFTP worker route project
