@@ -2,6 +2,12 @@
 .idea/*
 *.iml
 
+### Eclipse ###
+.classpath
+.project
+.settings/*
+bin/*
+
 ### Gradle ###
 .gradle
 build/
