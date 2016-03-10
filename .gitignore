@@ -17,6 +17,7 @@ gradle-app.setting
 
 ### Java ###
 *.class
+target/
 
 # Package Files #
 *.jar
