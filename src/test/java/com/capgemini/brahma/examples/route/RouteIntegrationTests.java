@@ -31,7 +31,7 @@ public class RouteIntegrationTests {
     @Test
     public void restGetHelloTest() throws Exception {
         RestAssured.port = 10000;  // TODO  : this should be loaded from config
-        when().get("/rest/hello").then().body(equalTo("\"BOOOOOOOM!!!!!\""));
+        when().get("/api/v1/hello").then().body(equalTo("\"BOOOOOOOM!!!!!\""));
     }
 
 }
