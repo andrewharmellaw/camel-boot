@@ -36,12 +36,13 @@ public class MyAppConfig {
         configurer.setInitialDelayMillis(5000);
         configurer.setDelayMillis(5000);
         configurer.setIgnoreDeletesFromSource(true);
-        Resource[] resources = new Resource[5];
+        Resource[] resources = new Resource[6];
         resources[0] = new FileSystemResource("config/camel.properties");
         resources[1] = new FileSystemResource("config/env.properties");
         resources[2] = new FileSystemResource("config/hystrix.properties");
         resources[3] = new FileSystemResource("config/metrics.properties");
         resources[4] = new FileSystemResource("config/application.properties");
+        resources[5] = new FileSystemResource("config/activemq.properties");
         configurer.setLocations(resources);
 
         return configurer;
