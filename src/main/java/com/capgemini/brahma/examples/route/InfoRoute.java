@@ -23,12 +23,15 @@ public class InfoRoute extends RouteBuilder {
     @Value("${rest.api.port}")
     private String restApiPort;
 
+    @Value("${project.info.name}")
+    private String infoName;
+
+    @Value("${project.info.description}")
+    private String infoDescription;
+
     @Override
     public void configure() throws Exception {
         Map<String, String> infoMap = new HashMap<>();
-
-        String infoName = "Brahma Camel-Boot";
-        String infoDescription = "A seed-project for starting new REST-API Camel/Spring Boot projects";
 
         infoMap.put("name", infoName);
         infoMap.put("description", infoDescription);
