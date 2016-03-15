@@ -11,7 +11,6 @@ import org.springframework.core.io.Resource;
 import com.capgemini.archaius.spring.ArchaiusBridgePropertyPlaceholderConfigurer;
 
 @Configuration
-
 public class MyAppConfig {
 
     @Autowired

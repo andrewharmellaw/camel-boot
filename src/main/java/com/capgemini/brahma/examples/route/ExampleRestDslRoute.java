@@ -28,7 +28,7 @@ public class ExampleRestDslRoute extends RouteBuilder {
     public void configure() throws Exception {
 
         restConfiguration()
-                .component("netty4-http")
+                .component("jetty")
                 .bindingMode(RestBindingMode.json)
                 .dataFormatProperty("prettyPrint", "true")
                 .host("0.0.0.0")
