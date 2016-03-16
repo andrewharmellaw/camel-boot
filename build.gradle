@@ -72,7 +72,6 @@ tasks.withType(Test) {
 
 dependencies {
     compile (group: 'org.apache.camel',         name: 'camel-spring-boot',                  version: camelVersion)
-    compile (group: 'org.apache.camel',         name: 'camel-netty4-http',                  version: camelVersion)
     compile (group: 'org.apache.camel',         name: 'camel-jetty9',                       version: camelVersion)
     compile (group: 'org.apache.camel',         name: 'camel-jackson',                      version: camelVersion)
     compile (group: 'org.apache.camel',         name: 'camel-swagger-java',                 version: camelVersion)
