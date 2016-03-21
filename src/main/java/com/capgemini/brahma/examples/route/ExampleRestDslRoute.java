@@ -1,5 +1,6 @@
 package com.capgemini.brahma.examples.route;
 
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,23 +10,23 @@ import org.springframework.stereotype.Component;
 public class ExampleRestDslRoute extends RouteBuilder {
 
 	
-    @Value("${rest.api.base.url:/api/v1}")
+    @Value("${rest.api.base.url}")
     private String restApiBaseUrl;
 
-    @Value("${rest.api.version:/v1}")
+    @Value("${rest.api.version}")
     private String restApiVersion;
     
-    @Value("${rest.api.title:Example API}")
+    @Value("${rest.api.title}")
     private String restApiTitle;
     
-    @Value("${rest.api.description:The example REST API in Brahma}")
+    @Value("${rest.api.description}")
     private String restApiDesc;
+
+    @Value("${rest.api.port}")
+    private String restApiPort;
     
     @Override
     public void configure() throws Exception {
-
-        // TODO: this should be loaded from config
-        Integer port = Integer.parseInt((System.getenv("PORT") != null ? System.getenv("PORT") : "10000"));
 
         restConfiguration()
                 .component("jetty")
@@ -33,7 +34,7 @@ public class ExampleRestDslRoute extends RouteBuilder {
                 .dataFormatProperty("prettyPrint", "true")
                 .host("0.0.0.0")
                 .contextPath(restApiBaseUrl)
-                .port(port)
+                .port(restApiPort)
                 .apiContextPath("/api-doc")
                 .apiProperty("api.description", restApiDesc)
                 .apiProperty("api.title", restApiTitle)
@@ -42,7 +43,12 @@ public class ExampleRestDslRoute extends RouteBuilder {
 
         rest("/hello").description("Say hello.")
                 .produces("application/json")
-                .get().description("Get hello.").route().transform(constant("BOOOOOOOM!!!!!"));
+                .get().description("Get hello.").route()
+                .to("direct:myroute");
+        
+        from("direct:myroute")
+        	.log(LoggingLevel.INFO, "Testing Metrics Output", "This is just a console level message for the fake route 'myroute'")
+        	.transform(constant("BOOOOOOOM!!!!!"));
 
     }
 }
