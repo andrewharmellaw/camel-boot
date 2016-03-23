@@ -1,5 +1,5 @@
 group 'com.capgemini.brahma'
-description = """Brahma - A seed-project for spring-boot-camel apps"""
+description = """Brahma - A seed-project for spring-boot-camel apps which want to expose a REST API"""
 
 buildscript {
     repositories {
@@ -26,9 +26,6 @@ jar {
     baseName = 'camel-boot'
     version =  '0.1.0-SNAPSHOT'
 }
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -86,7 +83,7 @@ dependencies {
     compile (group: 'com.capgemini',            name: 'archaius-spring-adapter',            version: '0.9.6')
 
     testCompile (group: 'junit',                    name: 'junit',                    version: '4.11')
-    testCompile (group: 'com.jayway.restassured',   name: 'rest-assured',             version: '2.4.1') // add for all web-based testing
+    testCompile (group: 'com.jayway.restassured',   name: 'rest-assured',             version: '2.4.1')
     testCompile (group: 'org.apache.camel',         name: 'camel-test-spring',        version: camelVersion)
     testCompile (group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion)
     testCompile (group: 'javax.servlet',            name: 'javax.servlet-api',        version: '3.1.0') // TODO: this is a duplicate

@@ -1,5 +1,6 @@
 package com.capgemini.brahma.config;
 
+import com.capgemini.archaius.spring.ArchaiusBridgePropertyPlaceholderConfigurer;
 import org.apache.camel.CamelContext;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-
-import com.capgemini.archaius.spring.ArchaiusBridgePropertyPlaceholderConfigurer;
 
 @Configuration
 public class MyAppConfig {
