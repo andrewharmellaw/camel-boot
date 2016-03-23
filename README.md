@@ -14,7 +14,7 @@ You also get:
  * REST api docs via [Swagger](http://swagger.io/)
  * circuit breaking on downstream calls via [Hystrix](https://github.com/Netflix/Hystrix)
  * metrics collection and publishing via CodaHale [Metrics](https://dropwizard.github.io/metrics/3.1.0/) for JVM, Jetty, and Hystrix as well as your app code (we also had Camel metrics, but we never used them)
- * an embedded Jetty servlet container (_not_ the Camel one above) which exposes the hystrix stream servlet and a codahale metrics servlet
+ * an embedded Jetty servlet container (_not_ the Camel one above) which exposes the [Hystrix metrics-event-stream servlet](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-metrics-event-stream) and the [Codahale Metrics servlets](https://dropwizard.github.io/metrics/3.1.0/manual/servlets/)
 
 # Usage
 ## Quickstart
