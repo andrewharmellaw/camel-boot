@@ -28,15 +28,19 @@ To use this seed project, fork this repository, and rename it as desired.  Then 
 We have a design goal to reduce the amount of code which distracts form your business logic.  To this end, we've focussed on removing XML-config, ketp the dependencies clean and lean, and provided a structure which should give clear indication where to put your code.  It can however result in things looking a little magical. Here are how the various elements are set up:
 
 ### Properties 
-TBC
+Environment-dependent config information is read from a set of .properties files which are located external to the JAR file.  The ones for developent are located in the ```config``` directory.  These are split up so as to prevent any one file from getting too dense.  They are loaded and shared with Spring, Camel, and Hystrix via the [archaius-spring-adapter](https://github.com/Capgemini/archaius-spring-adapter) which is configured as a Spring ```@Bean``` in the MyAppConfig class.  The idea is to build a JAR which will work in _all_ environments, and then configure it with env-specific properties files deployed alongside it.
 
 #### Files to change
 TBC
 
 ### Spring Boot
-Dependencies aside, there seems to be little Spring Boot (or indeed Spring-anything) in evidence.  This is intentional. build.gradle is a good place to start.  Note that we have excluded the Tomcat starter (so we get Jetty) as well as web-mvc.  Because Spring Boot loves to look at your classpath and do clever things based on what it finds its best to add a single dependency to your project and then, before you add any code or config, run your tests and check that ```gradle bootRun``` still works.  It's amazing the havoc that a stray servlet-api, buried down in your dependency graph can wreak.
+The core of the Spring Boot app is the ```Application``` class.  This has the ```@SpringBootApplication``` annotation and gets us most of the way towards the fat jar goodness we desire.  Note that the ```@EnableAutoConfiguration``` annotation is NOT used.  We prefer to do things a little more explicitly which we find helps us avoid many of the Spring-magic problems most people encounter at some point or other.
 
-Then note the springBoot.mainClass config - you shouldn't have to change this. We've set up a starter main class for you too (see the *Camel* section next).  All you need to know for your Spring-Boot comprehension is that this class comes from Camel and gets all the Boot-y goodness up and running.
+This aside, you may notice that there seems to be little Spring Boot (or indeed Spring-anything) in evidence.  This is intentional. If you want to see what is there in the seed, ```build.gradle``` is a good place to start.  Note that we have excluded the Tomcat starter (so we get Jetty instead) as well as web-mvc.  We don't need them in our projects. 
+
+We have ended up doing this because Spring Boot loves to look at your classpath and do clever things based on what it finds.  While this is definitely a boon in most situations, it is possible that this can give you major headaches.  We have found that it is best therefore to add single dependencies to your project and then, before you add any code or config, run your tests and check that ```gradle bootRun``` still works.  It's amazing the havoc that a stray servlet-api, buried down in your dependency graph can wreak.
+
+Finally note that we've managed to do away with all that nasty XML Spring config.  As mentioned in the *Properties* section above, when we do need to create a bean, we do by creating a ```@Bean``` method it in the ```@Configuration``` annotated ```MyAppConfig``` class, or we explicitly import is with an explicit ```@Import``` at the top of the ```Application``` class.
 
 #### Files to change
 TBC
