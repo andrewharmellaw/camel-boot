@@ -1,22 +1,20 @@
 # camel-boot
 A seed-project for starting new REST-API Camel/Spring Boot projects
 
-This project is to be used to kick-start Camel/Spring-Boot projects (e.g. microservices) which expose a REST API.  When used in conjunction with [camel-boot-cxf-soap](https://github.com/andrewharmellaw/camel-boot-cxf-soap) (which does the same thing but exposes SOAP APIs) you have a good starter for ten for most microservices you may want to create.
+This project can be used to kick-start Spring-Boot-wrapped-Camel projects which expose a REST API. The core use case for this is a microservice. When used in conjunction with [camel-boot-cxf-soap](https://github.com/andrewharmellaw/camel-boot-cxf-soap) (which does the same thing but exposes a SOAP API) you have a good starter for ten for most synchronous microservices architectures you may want to create.
 
 # What's Inside?
-So what do I get by seeding my project in this way? Well, you'll get a set of code and config, plus gradle build, which bootstraps a Camel app exposing a REST API and is packaged as a Spring Boot fat jar.  
+So what do I get by seeding my project in this way? Well, you'll get a set of code and config, plus [Gradle](http://gradle.org/) build, which bootstraps an [Apache Camel](https://camel.apache.org/) app that exposes a REST API.  All this is handily packaged as a executable [Spring Boot](http://projects.spring.io/spring-boot/) fat jar.  
 
 You also get:
 
- * Camel endpoint exposure via Jetty 
- * integration tests via RESTassured which run under the integrationTest target and which start up your spring-boot app locally in order to run
- * logging via Logstash (with a sample config file)
-  * for stdout and http-access logging
- * REST api docs via Swagger
- * circuit breaking via Hystrix
- * metrics collection and publishing via CodaHale's Metrics 
-  * for JVM, Jetty, and Hystrix as well as our app code (we also had Camel metrics, but we never used them)
- * an embedded Jetty servlet container (not the Camel one above) which exposes the hystrix stream servlet and a codahale metrics servlet
+ * Camel endpoint exposure via [Jetty](https://eclipse.org/jetty/)
+ * integration tests via [RESTassured](https://github.com/jayway/rest-assured) which run under the integrationTest Gradle target and which start up your Spring Boot app locally in order to run them against it
+ * logging via [Logstash](https://www.elastic.co/products/logstash) (with a sample config files for STDOUT and Jetty Access logging)
+ * REST api docs via [Swagger](http://swagger.io/)
+ * circuit breaking on downstream calls via [Hystrix](https://github.com/Netflix/Hystrix)
+ * metrics collection and publishing via CodaHale [Metrics](https://dropwizard.github.io/metrics/3.1.0/) for JVM, Jetty, and Hystrix as well as your app code (we also had Camel metrics, but we never used them)
+ * an embedded Jetty servlet container (_not_ the Camel one above) which exposes the hystrix stream servlet and a codahale metrics servlet
 
 # Usage
 ## Quickstart
