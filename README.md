@@ -4,7 +4,7 @@ A seed-project for starting new REST-API Camel/Spring Boot projects
 This project can be used to kick-start Spring-Boot-wrapped-Camel projects which expose a REST API. The core use case for this is a microservice. When used in conjunction with [camel-boot-cxf-soap](https://github.com/andrewharmellaw/camel-boot-cxf-soap) (which does the same thing but exposes a SOAP API) you have a good starter for ten for most synchronous microservices architectures you may want to create.
 
 # What's Inside?
-So what do I get by seeding my project in this way? Well, you'll get a set of code and config, plus [Gradle](http://gradle.org/) build, which bootstraps an [Apache Camel](https://camel.apache.org/) app that exposes a REST API.  All this is handily packaged as a executable [Spring Boot](http://projects.spring.io/spring-boot/) fat jar.  
+So what do I get by seeding my project in this way? Well, you'll get a set of code, tests (unit and integration) and config, plus [Gradle](http://gradle.org/) build, which bootstraps an [Apache Camel](https://camel.apache.org/) app that exposes a REST API.  All this is handily packaged as a executable [Spring Boot](http://projects.spring.io/spring-boot/) fat jar.  
 
 You also get:
 
