@@ -40,9 +40,11 @@ TBC
 ### Spring Boot
 The core of the Spring Boot app is the ```Application``` class.  This has the ```@SpringBootApplication``` annotation and gets us most of the way towards the fat jar goodness we desire.  Note that the ```@EnableAutoConfiguration``` annotation is NOT used.  We prefer to do things a little more explicitly which we find helps us avoid many of the Spring-magic problems most people encounter at some point or other.
 
-This aside, you may notice that there seems to be little Spring Boot (or indeed Spring-anything) in evidence.  This is intentional. If you want to see what is there in the seed, ```build.gradle``` is a good place to start.  Note that we have excluded the Tomcat starter (so we get Jetty instead) as well as web-mvc.  We don't need them in our projects. 
+This aside, you may notice that there seems to be little Spring Boot (or indeed Spring-anything) in evidence.  This is intentional. If you want to see what is there in the seed, ```build.gradle``` is a good place to start.  Note that we have excluded the Tomcat starter (so we get Jetty instead) as well as web-mvc.  We don't need them in our projects.
 
-We have ended up doing this because Spring Boot loves to look at your classpath and do clever things based on what it finds.  While this is definitely a boon in most situations, it is possible that this can give you major headaches.  We have found that it is best therefore to add single dependencies to your project and then, before you add any code or config, run your tests and check that ```gradle bootRun``` still works.  It's amazing the havoc that a stray servlet-api, buried down in your dependency graph can wreak.
+We ended up doing this because Spring Boot loves to look at your classpath and do clever things based on what it finds.  While this is definitely a boon in most situations, it is possible that this can give you major headaches.  We have found that it is best therefore to add single dependencies to your project and then, before you add any code or config, run your tests and check that ```gradle bootRun``` still works.  It's amazing the havoc that a stray servlet-api, buried down in your dependency graph can wreak.
+
+We have added a banner.txt file which gives us the ASCII-goodness you see when you run your app.  If you change the contents of this file, the contents of the banner will change also.
 
 Finally note that we've managed to do away with all that nasty XML Spring config.  As mentioned in the *Properties* section above, when we do need to create a bean, we do by creating a ```@Bean``` method it in the ```@Configuration``` annotated ```MyAppConfig``` class, or we explicitly import is with an explicit ```@Import``` at the top of the ```Application``` class.
 
