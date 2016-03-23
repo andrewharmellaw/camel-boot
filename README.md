@@ -46,6 +46,12 @@ We have ended up doing this because Spring Boot loves to look at your classpath 
 
 Finally note that we've managed to do away with all that nasty XML Spring config.  As mentioned in the *Properties* section above, when we do need to create a bean, we do by creating a ```@Bean``` method it in the ```@Configuration``` annotated ```MyAppConfig``` class, or we explicitly import is with an explicit ```@Import``` at the top of the ```Application``` class.
 
+Taking the ```MyAppConfig``` class first, you can see there is some boiler-plate which illustrates how to get access to the Spring context (should you need it) and also a Spring bean instance of ```ArchaiusBridgePropertyPlaceholderConfigurer``` which loads the properties (into Spring-, Camel- and Netflix-scopes) from the files listed in the *Properties* section above.  See [github for more info on the Archaius-Spring-Adapter](https://github.com/Capgemini/archaius-spring-adapter) (which provides this class).
+
+With the ```@Import```, we're using Spring here to explicitly bring into config-scope another class which is again annotated ```@Configuration```.  This one comes from one of our dependencies - [springboot-camel-metrics-publisher]() in this case - and simply starts up and registers the servlets which publish the Hystrix metrics stream, the Codahale metrics, and allows thread dumps.  (For more information on all of these, see the relevant sections below.)
+
+This indicates a convention. If we want to add more configuration ```@Bean```s fo our app alone, we add them to ```MyAppConfig```.  If we are bringing them in from a dependency, explicitly declare them in ```Application``` via an ```@Import```.
+
 #### Files to change
 TBC
 
@@ -55,18 +61,16 @@ TBC
 ### Camel 
 First thing to note with the Camel elements are the dependencies.  There should be very few surprises here if you've used Camel before.  
 
-Second thing to note is ```src/main/java/...Application.java```.  This extends Camel's ```FatJarRouter```, and is annotated ```@SpringBootApplication``` thereby removing the need for us to have any Camel XML config at all.  It handles all that for us.  
+The Second thing to look at again is ```src/main/java/...Application.java```.  This extends Camel's ```FatJarRouter```, and as already mentioned is annotated ```@SpringBootApplication``` thereby removing the need for us to have any Camel XML config at all.  This tiny piece of typing means that when we do ```gradle bootRun``` (or ```java -jar YourApp.jar```) you will see your Camel context starting up inside a Spring context with next to no effort on your part.  
 
-The final things to notice are the ```src/main/java/...config/MyAppConfig.java``` and the ```@Import``` on ```Application.java```.  
-
-Taking ```MyAppConfig.java``` first, you can see there is some boiler-plaste which illustrates how to get access to the Spring context (should you need it) and also a Spring bean instance of ```ArchaiusBridgePropertyPlaceholderConfigurer``` which loads the properties (into Spring-, Camel- and Netflix-scopes) from the files listed in the *Properties* section above.  See [github for more info on the Archaius-Spring-Adapter](https://github.com/Capgemini/archaius-spring-adapter) (which provides this class).
-
-With the ```@Import```, we're using Spring here to bring into scope a class we have in one of our dependencies which is annotated ````@Configuration``` - this comes from [springboot-camel-metrics-publisher]() and simply starts up and registers the servlets which publish the hystrix metrics stream, the codahale metrics, and a thread dump servlet.
-
-Now that you know what the provided moving parts are you can take a look at the example route and associated tests... (TBC)
+The rest (no pun intended) is up to you.  We typically create our Camel routes in the ```route``` package. There is an example REST one in there for you already.  We have also added an example RESTassured integration test which runs when you run ```gradle integrationTest```.
 
 #### Files to change
 TBC
+
+#### Further reading
+* [Camel: Spring Boot](https://camel.apache.org/spring-boot.html)
+* [Camel: REST DSL](https://camel.apache.org/rest-dsl.html)
 
 ### Metrics
 TBC
