@@ -72,22 +72,32 @@ TBC
 * [Camel: Spring Boot](https://camel.apache.org/spring-boot.html)
 * [Camel: REST DSL](https://camel.apache.org/rest-dsl.html)
 
+### Swagger
+The example REST DSL route class generates and publishes Swagger files at http://localhost:xx/xxxxxxxxx.  To view these in the Swagger broswer you need to ..... TBC.
+
 ### Logging
+We use SLF4J and Logstash for our logging.  In addition to the expected STDOUT logging which goes by default to file and console, there is also HTTP access logging (also to file).
 
 #### Files to change
 TBC
 
 #### Further reading
-TBC
+* [Logstash Documentation](https://www.elastic.co/guide/en/logstash/2.2/index.html)
 
 ### Metrics
-Its always nice to have an idea 
+Its always nice to have an idea what your app is doing.  We make heavy use of CodaHale Metrics to give us this information.  As already mentioned, instrumented aspects of the seed project are:
+* JVM
+* Jetty
+* Hystrix
+* [Apache HTTPClient](https://hc.apache.org/httpcomponents-client-ga/index.html) (via the separate [circuit-broken-camel-rest-client](https://github.com/andrewharmellaw/circuit-broken-camel-rest-client) library)
+* App Code
+Camel is also instrumented, but we never made use of this data so its not included in this at this time.
 
 #### Files to change
 TBC
 
 #### Further reading
-TBC
+* [Metrics Manual](https://dropwizard.github.io/metrics/3.1.0/manual/)
 
 ### Hystrix
 TBC
