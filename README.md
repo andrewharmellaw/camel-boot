@@ -72,10 +72,30 @@ TBC
 * [Camel: Spring Boot](https://camel.apache.org/spring-boot.html)
 * [Camel: REST DSL](https://camel.apache.org/rest-dsl.html)
 
+### Logging
+
+#### Files to change
+TBC
+
+#### Further reading
+TBC
+
 ### Metrics
+Its always nice to have an idea 
+
+#### Files to change
+TBC
+
+#### Further reading
 TBC
 
 ### Hystrix
+TBC
+
+#### Files to change
+TBC
+
+#### Further reading
 TBC
 
 # Acknowledgements
