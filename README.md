@@ -33,6 +33,10 @@ Environment-dependent config information is read from a set of .properties files
 #### Files to change
 TBC
 
+#### Further reading
+* [archaius-spring-adapter](https://github.com/Capgemini/archaius-spring-adapter)
+* [Netflix Archaius](https://github.com/Netflix/archaius)
+
 ### Spring Boot
 The core of the Spring Boot app is the ```Application``` class.  This has the ```@SpringBootApplication``` annotation and gets us most of the way towards the fat jar goodness we desire.  Note that the ```@EnableAutoConfiguration``` annotation is NOT used.  We prefer to do things a little more explicitly which we find helps us avoid many of the Spring-magic problems most people encounter at some point or other.
 
@@ -44,6 +48,9 @@ Finally note that we've managed to do away with all that nasty XML Spring config
 
 #### Files to change
 TBC
+
+#### Further reading
+* [Spring Boot Reference Guide](http://docs.spring.io/spring-boot/docs/current-SNAPSHOT/reference/htmlsingle/)
 
 ### Camel 
 First thing to note with the Camel elements are the dependencies.  There should be very few surprises here if you've used Camel before.  
