@@ -13,6 +13,9 @@ import com.capgemini.brahma.Application;
 import static com.jayway.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+/**
+ * An example integraiton test which uses RESTAssured.
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
