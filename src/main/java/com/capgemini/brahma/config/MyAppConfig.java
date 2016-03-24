@@ -28,6 +28,9 @@ public class MyAppConfig {
             @Override
             public void beforeApplicationStart(CamelContext context) {
                 System.out.println("your custom configuration goes here.");
+                if(context.isAllowUseOriginalMessage()) {
+                    context.setAllowUseOriginalMessage(Boolean.FALSE);
+                }
             }
         };
     }
