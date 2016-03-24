@@ -1,11 +1,17 @@
 package com.capgemini.brahma.examples.route;
 
-import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+/**
+ * An example Camel REST DSL route which uses a Jetty binding as an HTTP listener, binds to JSON payloads, and exposes
+ * Swagger API docs.
+ *
+ * The separate rest("...") and from("direct:...") implementation is a handy pattern as it separates the exposure of the
+ * logic (the REST API) form its implementation (in from("direct:...").
+ */
 @Component
 public class ExampleRestDslRoute extends RouteBuilder {
 
@@ -47,7 +53,6 @@ public class ExampleRestDslRoute extends RouteBuilder {
                 .to("direct:myroute");
         
         from("direct:myroute")
-        	.log(LoggingLevel.INFO, "Testing Metrics Output", "This is just a console level message for the fake route 'myroute'")
         	.transform(constant("BOOOOOOOM!!!!!"));
 
     }

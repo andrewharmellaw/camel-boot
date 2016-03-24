@@ -1,16 +1,16 @@
 package com.capgemini.brahma.examples.route;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * "Info" HTTP Endpoint Route. GET returns a simple JSON service with infomation
- * on the service
+ * Information HTTP Endpoint Route. A GET request returns a simple JSON service with information
+ * on the service.
  *
  * @author - Nikhil Vibhav
  */

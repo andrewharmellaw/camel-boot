@@ -1,5 +1,6 @@
 package com.capgemini.brahma.config;
 
+import com.capgemini.archaius.spring.ArchaiusBridgePropertyPlaceholderConfigurer;
 import org.apache.camel.CamelContext;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
-import com.capgemini.archaius.spring.ArchaiusBridgePropertyPlaceholderConfigurer;
-
+/**
+ * Spring Configuration class which provides all the app-specific config via @Bean-annotated methods.
+ */
 @Configuration
 public class MyAppConfig {
 
@@ -20,6 +22,10 @@ public class MyAppConfig {
     @Autowired
     CamelContext camelContext;
 
+    /**
+     * Access the camel context.
+     * @return the camel context
+     */
     @Bean
     CamelContextConfiguration contextConfiguration() {
         return new CamelContextConfiguration() {
@@ -30,6 +36,11 @@ public class MyAppConfig {
         };
     }
 
+    /**
+     * Setup the ArchaiusBridgePropertyPlaceholderConfigurer to provide properties information to Spring, Camel, and
+     * Hystrix.
+     * @return the configurer
+     */
     @Bean
     public ArchaiusBridgePropertyPlaceholderConfigurer bridgePropertyPlaceholder() {
 
