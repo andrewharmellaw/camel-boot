@@ -23,9 +23,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 @WebIntegrationTest("server.port:1111")
 public class RouteIntegrationTests {
 
-    @Value("${server.port}")
-    private String serverPort;
-
     @Before
     public void setUp() throws Exception {
         RestAssured.baseURI = "http://localhost";
