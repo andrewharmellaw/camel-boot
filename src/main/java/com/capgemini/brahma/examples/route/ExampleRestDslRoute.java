@@ -1,5 +1,6 @@
 package com.capgemini.brahma.examples.route;
 
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +31,12 @@ public class ExampleRestDslRoute extends RouteBuilder {
 
     @Value("${rest.api.port}")
     private String restApiPort;
-    
+
+    @Value("${camel.route.endpoint}")
+    private String otherCamelProperty;
+
+    private final String camelPropertyKey = "{{camel.route.endpoint}}";
+
     @Override
     public void configure() throws Exception {
 
@@ -52,7 +58,8 @@ public class ExampleRestDslRoute extends RouteBuilder {
                 .get().description("Get hello.").route()
                 .to("direct:myroute");
         
-        from("direct:myroute")
+        from("properties:camel.route.endpoint")
+                .log(LoggingLevel.INFO, "Boom value is {{camel.route.endpoint}}")     //Just to show that it prints this property value here but doesn't accept the same format as route endpoint!! Weird!
         	.transform(constant("BOOOOOOOM!!!!!"));
 
     }
