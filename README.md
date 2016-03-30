@@ -10,11 +10,11 @@ You also get:
 
  * Camel endpoint exposure via [Jetty](https://eclipse.org/jetty/)
  * integration tests via [RESTassured](https://github.com/jayway/rest-assured) which run under the integrationTest Gradle target and which start up your Spring Boot app locally in order to run them against it
- * logging via [Logstash](https://www.elastic.co/products/logstash) (with a sample config files for STDOUT and Jetty Access logging)
+ * logging via [SLF4J](http://www.slf4j.org/)/[Logback](http://logback.qos.ch/) (with a sample config files for STDOUT and Jetty Access logging)
  * REST api docs via [Swagger](http://swagger.io/)
  * circuit breaking on downstream calls via [Hystrix](https://github.com/Netflix/Hystrix)
  * metrics collection and publishing via CodaHale [Metrics](https://dropwizard.github.io/metrics/3.1.0/) for JVM, Jetty, and Hystrix as well as your app code (we also had Camel metrics, but we never used them)
- * an embedded Jetty servlet container (_not_ the Camel one above) which exposes the [Hystrix metrics-event-stream servlet](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-metrics-event-stream) and the [Codahale Metrics servlets](https://dropwizard.github.io/metrics/3.1.0/manual/servlets/)
+ * an embedded Jetty servlet container which exposes the [Hystrix metrics-event-stream servlet](https://github.com/Netflix/Hystrix/tree/master/hystrix-contrib/hystrix-metrics-event-stream) and the [Codahale Metrics servlets](https://dropwizard.github.io/metrics/3.1.0/manual/servlets/)
 
 # Usage
 ## Quickstart
