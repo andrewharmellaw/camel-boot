@@ -2,6 +2,7 @@ package com.capgemini.brahma.config;
 
 import com.capgemini.archaius.spring.ArchaiusBridgePropertyPlaceholderConfigurer;
 import org.apache.camel.CamelContext;
+import org.apache.camel.component.properties.PropertiesComponent;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +29,10 @@ public class MyAppConfig {
             @Override
             public void beforeApplicationStart(CamelContext context) {
                 System.out.println("your custom configuration goes here.");
+                PropertiesComponent pc = new PropertiesComponent();
+                pc.setLocation("file:config/env.properties");
+                context.addComponent("properties", pc);
+
                 if(context.isAllowUseOriginalMessage()) {
                     context.setAllowUseOriginalMessage(Boolean.FALSE);
                 }
