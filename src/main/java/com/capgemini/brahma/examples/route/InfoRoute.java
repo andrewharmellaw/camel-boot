@@ -37,7 +37,7 @@ public class InfoRoute extends RouteBuilder {
         infoMap.put("description", infoDescription);
 
         restConfiguration()
-                .component("jetty")
+                .component("servlet")
                 .bindingMode(RestBindingMode.json)
                 .dataFormatProperty("prettyPrint", "true")
                 .host("0.0.0.0")

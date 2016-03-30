@@ -4,7 +4,9 @@ import com.jayway.restassured.RestAssured;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -18,7 +20,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
-@WebAppConfiguration
+@WebIntegrationTest("server.port:1111")
 public class RouteIntegrationTests {
 
     @Before
@@ -28,7 +30,7 @@ public class RouteIntegrationTests {
 
     @Test
     public void restGetHelloTest() throws Exception {
-        RestAssured.port = 10000;  // TODO  : this should be loaded from config
+        RestAssured.port = 1111;  // TODO  : this should be loaded from config
         when().get("/api/v1/hello").then().body(equalTo("\"BOOOOOOOM!!!!!\""));
     }
 
