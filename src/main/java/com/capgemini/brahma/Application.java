@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
+import com.capgemini.brahma.config.CamelHttpServletConfig;
 import com.capgemini.brahma.config.JettyServerCustomizer;
 import com.capgemini.camel.metrics.publisher.configuration.MetricsServletConfiguration;
 
@@ -17,7 +18,7 @@ import com.capgemini.camel.metrics.publisher.configuration.MetricsServletConfigu
  * annotation.  If these configurations are app-specific, they should go in the MyAppConfig class, but if they are
  * contained in existing JAR files, then add there here as shown below for MetricsServletConfiguration.
  */
-@Import({MetricsServletConfiguration.class, JettyServerCustomizer.class})
+@Import({MetricsServletConfiguration.class, JettyServerCustomizer.class, CamelHttpServletConfig.class})
 @SpringBootApplication
 public class Application extends FatJarRouter {
 

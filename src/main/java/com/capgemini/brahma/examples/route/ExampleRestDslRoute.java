@@ -1,5 +1,6 @@
 package com.capgemini.brahma.examples.route;
 
+import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,7 +36,7 @@ public class ExampleRestDslRoute extends RouteBuilder {
     public void configure() throws Exception {
 
         restConfiguration()
-                .component("jetty")
+                .component("servlet")
                 .bindingMode(RestBindingMode.json)
                 .dataFormatProperty("prettyPrint", "true")
                 .host("0.0.0.0")
@@ -53,6 +54,7 @@ public class ExampleRestDslRoute extends RouteBuilder {
                 .to("direct:myroute");
         
         from("direct:myroute")
+        	.log(LoggingLevel.INFO, "Testing Metrics Output", "This is just a console level message for the fake route 'myroute'")
         	.transform(constant("BOOOOOOOM!!!!!"));
 
     }
