@@ -16,10 +16,6 @@ import org.springframework.core.io.Resource;
 @Configuration
 public class MyAppConfig {
 
-//    private static final Logger LOGGER = LoggerFactory.getLogger(MyAppConfig.class);
-//    
-//    private static final String ACCESS_LOG_FILE_PATH = "config/logback-access.xml";
-
     @Autowired
     CamelContext camelContext;
 
