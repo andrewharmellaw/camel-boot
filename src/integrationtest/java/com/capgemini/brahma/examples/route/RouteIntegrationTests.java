@@ -5,20 +5,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.capgemini.brahma.Application;
 import com.jayway.restassured.RestAssured;
 
 import static com.jayway.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.DEFINED_PORT;
 
 /**
  * An example integraiton test which uses RESTAssured.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest("server.port:1111")
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = Application.class, webEnvironment= DEFINED_PORT)
 public class RouteIntegrationTests {
 
     @Before

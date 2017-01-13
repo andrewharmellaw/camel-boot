@@ -1,12 +1,14 @@
 package com.capgemini.brahma.config;
 
 import com.capgemini.archaius.spring.ArchaiusBridgePropertyPlaceholderConfigurer;
+import com.codahale.metrics.MetricRegistry;
 import org.apache.camel.CamelContext;
 import org.apache.camel.component.properties.PropertiesComponent;
 import org.apache.camel.spring.boot.CamelContextConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
@@ -24,7 +26,7 @@ public class MyAppConfig {
      * @return the camel context
      */
     @Bean
-    CamelContextConfiguration contextConfiguration() {
+    CamelContextConfiguration contextConfiguration(MetricRegistry metricRegistry) {
         return new CamelContextConfiguration() {
             @Override
             public void beforeApplicationStart(CamelContext context) {
@@ -37,6 +39,10 @@ public class MyAppConfig {
                     context.setAllowUseOriginalMessage(Boolean.FALSE);
                 }
             }
+
+            @Override
+            public void afterApplicationStart(CamelContext camelContext) {
+            }
         };
     }
 
@@ -46,6 +52,7 @@ public class MyAppConfig {
      * @return the configurer
      */
     @Bean
+    @Primary
     public ArchaiusBridgePropertyPlaceholderConfigurer bridgePropertyPlaceholder() {
 
         ArchaiusBridgePropertyPlaceholderConfigurer configurer = new ArchaiusBridgePropertyPlaceholderConfigurer();
