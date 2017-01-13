@@ -14,7 +14,6 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
-        classpath 'com.netflix.nebula:nebula-release-plugin:4.1.1'
     }
 }
 
